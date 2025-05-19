@@ -151,7 +151,7 @@ void get_field_state_from_field_cards(int cards[8][15], state *field_status){
 	    while(j+count<15 && cards[i][j+count]>0){
 	      count++;
 	    }
-	if((field_status->is_rev==0)||( field_status->is_rev==1 )){
+	if(field_status->is_rev==0){
 	  field_status->order=j+count-1;
 	}else{
 	  field_status->order=j;
