@@ -44,35 +44,11 @@ void select_submit_cards(int out_cards[8][15],int my_cards[8][15], state *field_
   copy_table(out_cards, select_cards);
 }
 
-void select_cards_free(int select_cards[8][15], int my_cards[8][15], state *field_status){ //場にカードが無いとき
-  clear_table(select_cards); // カード選択用の配列を初期化
-  
-  for (int i = 1; i < 4; i++){ // 階段出し
-    int count_sequence = 0;
-    for (int j = 0; j < 14; j++){ // 全数字について
-      if (my_cards[i][j] == 1){
-        count_sequence++;
-      }
-    }
-    if (count_sequence >= 3){ // 階段が見つかった場合
-      int put = 0;
-      for (int j = 0; j < 14; j++){
-        if (my_cards[i][j] == 1){
-          select_cards[i][j] = 1;
-          put++;
-        }
-      }
-      return;
-    }
-  }
-
-  // ペア
-  search_low_pair(select_cards,my_cards,0);
-  // ペアがなければ一枚だけ出す(従来の処理)
+void select_cards_free(int select_cards[8][15], int my_cards[8][15], state *field_status){
   search_low_card(select_cards,my_cards,0); // 手持ちの一番弱いカードを単騎で提出する
 }
 
-void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *field_status){ //場にカードがあるとき
+void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *field_status){
   int tmp_cards[8][15];
  
   copy_table(tmp_cards, my_cards); 
