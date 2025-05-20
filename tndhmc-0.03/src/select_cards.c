@@ -27,17 +27,17 @@ void select_submit_cards(int out_cards[8][15],int my_cards[8][15], state *field_
  
   clear_table(select_cards);
 
-  if(field_status->is_rev==0){
-    if(field_status->is_no_card==1){                //場にカードが無いとき
-      select_cards_free(select_cards, my_cards, field_status);    //通常時の提出用
-    }else{
-      select_cards_restrict(select_cards,my_cards, field_status);    //通常時の提出用
+  if(field_status->is_rev==0){ // 革命中でない
+    if(field_status->is_no_card==1){ // 場にカードが無いとき
+      select_cards_free(select_cards, my_cards, field_status); // 通常時の提出用(自分の手持ちのカードの中で一番弱いカードを単騎で提出)
+    }else{ // 場にカードがある時
+      select_cards_restrict(select_cards,my_cards, field_status); // 通常時の提出用(場が単騎の時に自分の手持ちのカードのうちで一番弱いカードを単騎で提出)
     }
-  }else{
-    if(field_status->is_no_card==1){                //場にカードが無いとき
-      select_cards_free_rev(select_cards, my_cards, field_status); //革命時の提出用
-    }else{
-      select_cards_restrict_rev(select_cards, my_cards, field_status); //革命時の提出用
+  }else{ // 革命中である
+    if(field_status->is_no_card==1){ // 場にカードが無いとき
+      select_cards_free_rev(select_cards, my_cards, field_status); // 革命時の提出用
+    }else{ // 場にカードがある時
+      select_cards_restrict_rev(select_cards, my_cards, field_status); // 革命時の提出用
     }
   }
 
@@ -45,7 +45,14 @@ void select_submit_cards(int out_cards[8][15],int my_cards[8][15], state *field_
 }
 
 void select_cards_free(int select_cards[8][15], int my_cards[8][15], state *field_status){
-  search_low_card(select_cards,my_cards,0); // 手持ちの一番弱いカードを単騎で提出する
+  int info_table[8][15];
+  make_info_table(info_table, my_cards);
+  if (count_cards(select_cards) == 0){
+    search_low_pair(select_cards, info_table, my_cards);
+  }
+  if (count_cards(select_cards) == 0){
+    search_low_card(select_cards, my_cards, 0); // ペアがなければ単騎を出す
+  }
 }
 
 void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *field_status){

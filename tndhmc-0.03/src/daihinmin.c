@@ -23,3 +23,23 @@ void search_low_card(int out_cards[8][15],int my_cards[8][15],int use_joker_flag
     out_cards[0][14]=2;                  //ジョーカーをのせる
   }
 }
+
+void make_info_table(int info_table[8][15], int my_cards[8][15]){
+  clear_table(info_table);
+  for(int i = 1; i <= 13; i++){
+    info_table[4][i] = my_cards[0][i] + my_cards[1][i] + my_cards[2][i] + my_cards[3][i];
+  }
+}
+
+int search_low_pair(int dst_cards[8][15], int info_table[8][15], int my_cards[8][15]){
+  clear_table(dst_cards);
+  for(int i = 1; i < 14; i++){
+    if (info_table[4][i] >= 2) {
+      for(int j = 0; j < 4; j++){
+        dst_cards[j][i] = my_cards[j][i];
+      }
+      return 1;
+    }
+  }
+  return 0;
+}
