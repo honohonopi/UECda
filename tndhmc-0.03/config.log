@@ -30,8 +30,8 @@ Kernel configured for up to 12 processors.
 Processor type: arm64e (ARM64E)
 Processors active: 0 1 2 3 4 5 6 7 8 9 10 11
 Primary memory available: 16.00 gigabytes
-Default processor set: 708 tasks, 5216 threads, 12 processors
-Load average: 2.40, Mach factor: 9.59
+Default processor set: 620 tasks, 4617 threads, 12 processors
+Load average: 1.51, Mach factor: 10.48
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -80,13 +80,13 @@ configure:2819: found /usr/bin/gcc
 configure:2830: result: gcc
 configure:3059: checking for C compiler version
 configure:3068: gcc --version >&5
-Apple clang version 15.0.0 (clang-1500.3.9.4)
+Apple clang version 16.0.0 (clang-1600.0.26.3)
 Target: arm64-apple-darwin23.6.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 configure:3079: $? = 0
 configure:3068: gcc -v >&5
-Apple clang version 15.0.0 (clang-1500.3.9.4)
+Apple clang version 16.0.0 (clang-1600.0.26.3)
 Target: arm64-apple-darwin23.6.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
@@ -130,8 +130,8 @@ configure:3431: result: yes
 configure:3448: checking for gcc option to accept ISO C89
 configure:3511: gcc  -c -g -O2  conftest.c >&5
 conftest.c:17:14: warning: a function definition without a prototype is deprecated in all versions of C and is not supported in C2x [-Wdeprecated-non-prototype]
-static char *e (p, i)
-             ^
+   17 | static char *e (p, i)
+      |              ^
 1 warning generated.
 configure:3511: $? = 0
 configure:3524: result: none needed
@@ -158,8 +158,8 @@ configure:3994: gcc -E  conftest.c
 configure:3994: $? = 0
 configure:4008: gcc -E  conftest.c
 conftest.c:11:10: fatal error: 'ac_nonexistent.h' file not found
-#include <ac_nonexistent.h>
-         ^~~~~~~~~~~~~~~~~~
+   11 | #include <ac_nonexistent.h>
+      |          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 configure:4008: $? = 1
 configure: failed program was:
@@ -179,8 +179,8 @@ configure:4053: gcc -E  conftest.c
 configure:4053: $? = 0
 configure:4067: gcc -E  conftest.c
 conftest.c:11:10: fatal error: 'ac_nonexistent.h' file not found
-#include <ac_nonexistent.h>
-         ^~~~~~~~~~~~~~~~~~
+   11 | #include <ac_nonexistent.h>
+      |          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 configure:4067: $? = 1
 configure: failed program was:
@@ -306,8 +306,8 @@ configure:4358: result: yes
 configure:4376: checking for bzero
 configure:4376: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:54:6: warning: incompatible redeclaration of library function 'bzero' [-Wincompatible-library-redeclaration]
-char bzero ();
-     ^
+   54 | char bzero ();
+      |      ^
 conftest.c:54:6: note: 'bzero' is a builtin with type 'void (void *, unsigned long)'
 1 warning generated.
 configure:4376: $? = 0
@@ -319,8 +319,8 @@ configure:4376: result: yes
 configure:4376: checking for memset
 configure:4376: gcc -o conftest -g -O2   conftest.c  >&5
 conftest.c:56:6: warning: incompatible redeclaration of library function 'memset' [-Wincompatible-library-redeclaration]
-char memset ();
-     ^
+   56 | char memset ();
+      |      ^
 conftest.c:56:6: note: 'memset' is a builtin with type 'void *(void *, int, unsigned long)'
 1 warning generated.
 configure:4376: $? = 0

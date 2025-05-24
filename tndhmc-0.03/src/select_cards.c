@@ -48,7 +48,10 @@ void select_cards_free(int select_cards[8][15], int my_cards[8][15], state *fiel
   int info_table[8][15];
   make_info_table(info_table, my_cards);
   if (count_cards(select_cards) == 0){
-    search_low_pair(select_cards, info_table, my_cards);
+    search_low_sequence(select_cards, info_table, my_cards); // 階段を探す
+  }
+  if (count_cards(select_cards) == 0){
+    search_low_pair(select_cards, info_table, my_cards);  // 階段がなければペアを探す
   }
   if (count_cards(select_cards) == 0){
     search_low_card(select_cards, my_cards, 0); // ペアがなければ単騎を出す
